@@ -268,3 +268,25 @@ footer {
     font-size: 1.5rem;
   }
 }
+
+.Robotics-Website {
+  background: #f0f0f0;
+  border: 2px inset #ffffff;
+  padding: 1rem;
+}
+
+.Robotics-Website h3 {
+  color: #800080;
+  margin-top: 0;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  background: var(--y2k-yellow);
+  display: inline-block;
+  padding: 2px 6px;
+  border: 1px solid #000;
+}
+
+.Robotics-Website p {
+  color: #000;
+  margin: 0.5rem 0 0;
+}
