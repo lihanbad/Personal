@@ -1,0 +1,62 @@
+.terminal-window {
+  background: #000;
+}
+
+.terminal-body {
+  background: #000;
+  border: 2px inset #808080;
+  margin: 2px;
+  padding: 1rem;
+  font-family: "Courier New", monospace;
+  min-height: 320px;
+  max-height: 480px;
+  overflow-y: auto;
+  outline: none;
+  cursor: text;
+  user-select: none;
+}
+
+.term-output {
+  margin: 0;
+  color: var(--y2k-lime);
+  font-size: 0.85rem;
+  line-height: 1.35;
+  white-space: pre-wrap;
+  word-break: break-word;
+  user-select: text;
+}
+
+.term-line {
+  display: flex;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.term-prompt {
+  color: var(--y2k-cyan);
+  font-weight: bold;
+  font-size: 0.85rem;
+  margin-right: 0.5rem;
+  white-space: nowrap;
+}
+
+.term-input {
+  color: #ffffff;
+  font-size: 0.85rem;
+  white-space: pre;
+}
+
+.term-cursor {
+  display: inline-block;
+  width: 9px;
+  height: 14px;
+  background: var(--y2k-lime);
+  margin-left: 2px;
+  animation: term-blink 1s steps(1) infinite;
+}
+
+@keyframes term-blink {
+  50% {
+    opacity: 0;
+  }
+}

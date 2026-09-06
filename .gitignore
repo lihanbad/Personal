@@ -1,0 +1,28 @@
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor noise
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs / temp
+*.log
+*.tmp
+*.bak
+*~
+
+# Node / build cruft (none should exist, but just in case)
+node_modules/
+dist/
+build/
+package-lock.json
+
+# The internet never needed these
+*.png.bak
+
+# If you accidentally download the full Internet
+internet_download_complete.txt

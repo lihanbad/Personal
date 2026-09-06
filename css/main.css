@@ -274,28 +274,6 @@ footer {
   }
 }
 
-.Robotics-Website {
-  background: #f0f0f0;
-  border: 2px inset #ffffff;
-  padding: 1rem;
-}
-
-.Robotics-Website h3 {
-  color: #800080;
-  margin-top: 0;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  background: var(--y2k-yellow);
-  display: inline-block;
-  padding: 2px 6px;
-  border: 1px solid #000;
-}
-
-.Robotics-Website p {
-  color: #000;
-  margin: 0.5rem 0 0;
-}
-
 /* Animated Scanline Overlay */
 body::after {
   content: "";
@@ -328,7 +306,7 @@ body::after {
 
 
 body, button, a {
-  cursor: crosshair;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="%2300FF00" d="M7 0h2v16H7zM0 7h16v2H0z"/></svg>') 8 8, crosshair;
 }
 
 body::before {

@@ -1,0 +1,9 @@
+{
+  "name": "Lihan's Cyber Zone | Robotics & Tech",
+  "short_name": "Lihan",
+  "description": "Personal website and robotics portfolio of Lihan, a robotics enthusiast and developer based in New Zealand.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000033",
+  "theme_color": "#000080"
+}

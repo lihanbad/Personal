@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lihan's Cyber Zone 2000 | Terminal Interface</title>
+    <meta name="description" content="Interactive retro terminal interface for Lihan's personal website. Type commands to explore.">
+    
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/terminal.css">
+  </head>
+  <body>
+
+    <div id="wrapper">
+      
+      <div class="marquee-container">
+        <marquee scrollamount="6">*** SECURE SHELL ESTABLISHED *** WELCOME TO LIHAN'S MAINFRAME *** TYPE 'HELP' FOR AVAILABLE COMMANDS *** UNDER CONSTRUCTION ***</marquee>
+      </div>
+
+      <nav class="navbar">
+        <div class="logo">lihan_v1.exe</div>
+        <ul class="nav-links">
+          <li><a href="index.html#home">[ HOME ]</a></li>
+          <li><a href="index.html#about">[ ABOUT ]</a></li>
+          <li><a href="robotics.html">[ ROBOTICS ]</a></li>
+          <li><a href="projects.html">[ PROJECTS ]</a></li>
+          <li><a href="contact.html">[ CONTACT ]</a></li>
+          <li><a href="terminal.html">[ TERMINAL ]</a></li>
+        </ul>
+      </nav>
+
+      <header id="terminal-hero" class="hero">
+        <h1 class="glitch-title">COMMAND LINE ACCESS</h1>
+        <p class="tagline">&lt;&lt;&lt; Interactive Mainframe Interface // Authorized Personnel Only &gt;&gt;&gt;</p>
+      </header>
+
+      <main class="content">
+
+        <section class="about-me terminal-window">
+          
+          <div class="win-header">
+            <span class="win-title">C:\WINDOWS\SYSTEM32\CMD.EXE - lihan@mainframe</span>
+            <div class="win-controls">
+              <span class="win-btn" id="term-min">_</span>
+              <span class="win-btn" id="term-close">X</span>
+            </div>
+          </div>
+
+          <div class="terminal-body" id="terminal" tabindex="0">
+            <pre id="term-output" class="term-output"></pre>
+            <div class="term-line">
+              <span class="term-prompt" id="term-prompt">lihan@mainframe:~$</span>
+              <span id="term-input" class="term-input"></span>
+              <span class="term-cursor"></span>
+            </div>
+          </div>
+
+        </section>
+
+        <div class="btn-center">
+          <a href="index.html" class="y2k-btn">
+            &gt;&gt; RETURN TO MAIN SYSTEM &lt;&lt;
+          </a>
+        </div>
+
+      </main>
+
+      <footer>
+        <p>&copy; 2026 Lihan. Built for robotics, code, and continuous learning.</p>
+        <img onclick="window.open('https://www.torn.com/3981445')" style="cursor: pointer;" src="https://banners.torn.com/static_728x90_torncity.jpg?v=1528808940574" data-width="728" data-height="90" gzux9dl58="">
+      </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+    <script src="terminal.js"></script>
+  </body>
+</html>
