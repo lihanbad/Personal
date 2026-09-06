@@ -321,167 +321,22 @@ body::before {
   pointer-events: none;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&family=Press+Start+2P&display=swap');
-
-/* Module Outer Wrapper (Isolated Scope) */
-.y2k-module {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 30px 20px;
-  background-color: #0b001a;
-  background-image: 
-    linear-gradient(rgba(255, 0, 128, 0.18) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 0, 128, 0.18) 1px, transparent 1px);
-  background-size: 32px 32px;
-  border-radius: 16px;
-  overflow: hidden;
-  font-family: 'Orbitron', sans-serif;
-  color: #ffffff;
-  box-sizing: border-border;
-}
-
-/* Scoped Internal Resets */
-.y2k-module *, 
-.y2k-module *::before, 
-.y2k-module *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-/* Local CRT Scanline Effect (Contained inside module) */
-.y2k-module::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.3),
-    rgba(0, 0, 0, 0.3) 1px,
-    transparent 1px,
-    transparent 2px
-  );
-  pointer-events: none;
-  z-index: 2;
-}
-
-/* Y2K Card Frame */
-.y2k-module .y2k-card {
-  position: relative;
-  width: 100%;
-  max-width: 360px;
-  background: rgba(20, 5, 35, 0.85);
-  border: 2px solid #00f0ff;
-  border-radius: 12px;
-  box-shadow: 
-    0 0 15px #00f0ff,
-    0 0 30px #ff007f,
-    inset 0 0 15px rgba(255, 0, 128, 0.4);
-  backdrop-filter: blur(6px);
-  overflow: hidden;
-  z-index: 3;
-}
-
-/* Window Header Bar */
-.y2k-module .y2k-window-header {
-  background: linear-gradient(90deg, #ff007f, #7928ca, #00f0ff);
-  padding: 6px 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 10px;
-  color: #ffffff;
-  text-shadow: 1px 1px 2px #000;
-}
-
-.y2k-module .y2k-window-controls span {
-  margin-left: 8px;
-  cursor: pointer;
-}
-
-/* Card Content Area */
-.y2k-module .y2k-card-content {
-  padding: 28px 20px;
+/* Lightweight Text Styling */
+.countdown-box {
+  font-family: monospace, sans-serif;
   text-align: center;
+  padding: 12px;
 }
 
-.y2k-module .y2k-badge {
-  display: inline-block;
-  font-size: 10px;
-  color: #00f0ff;
-  border: 1px solid #00f0ff;
-  padding: 4px 10px;
-  border-radius: 20px;
-  margin-bottom: 14px;
-  text-shadow: 0 0 5px #00f0ff;
-  box-shadow: 0 0 8px rgba(0, 240, 255, 0.3);
-}
-
-/* Chrome Metallic Title */
-.y2k-module .y2k-chrome-title {
-  font-size: 32px;
-  font-weight: 900;
-  line-height: 1.1;
-  background: linear-gradient(180deg, #ffffff 0%, #a6afb8 50%, #ffffff 51%, #3a4146 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 8px #ff007f);
-  letter-spacing: 2px;
-  margin-bottom: 6px;
-}
-
-.y2k-module .y2k-subtitle {
-  font-size: 11px;
-  color: #ff80df;
-  text-transform: uppercase;
+.countdown-label {
+  font-size: 12px;
   letter-spacing: 1px;
-  margin-bottom: 20px;
+  color: #666;
+  margin-bottom: 4px;
 }
 
-/* Interactive Inner Box */
-.y2k-module .y2k-glow-box {
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px dashed #ff007f;
-  padding: 12px;
-  margin-bottom: 22px;
-  font-size: 11px;
-}
-
-.y2k-module .y2k-status-online {
-  color: #00ff66;
-  text-shadow: 0 0 8px #00ff66;
+.countdown-display {
+  font-size: 24px;
   font-weight: bold;
-}
-
-/* Glossy Metallic Button */
-.y2k-module .y2k-btn {
-  width: 100%;
-  padding: 12px;
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  color: #000000;
-  background: linear-gradient(180deg, #00f0ff, #0080ff);
-  border: 2px solid #ffffff;
-  border-radius: 25px;
-  cursor: pointer;
-  box-shadow: 
-    0 0 12px #00f0ff,
-    inset 0 2px 4px #ffffff;
-  transition: all 0.2s ease-in-out;
-}
-
-.y2k-module .y2k-btn:hover {
-  background: linear-gradient(180deg, #ff007f, #ff66cc);
-  color: #ffffff;
-  box-shadow: 
-    0 0 18px #ff007f,
-    inset 0 2px 4px #ffffff;
-  transform: scale(1.03);
+  color: #111;
 }
