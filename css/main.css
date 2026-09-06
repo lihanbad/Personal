@@ -1,4 +1,9 @@
-/* Y2K Aesthetic Stylesheet */
+body{
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="%2300FF00" d="M7 0h2v16H7zM0 7h16v2H0z"/></svg>') 8 8, auto;
+
+}
+
+
 :root {
   --y2k-bg: #000033;
   --y2k-silver: #c0c0c0;
@@ -289,4 +294,34 @@ footer {
 .Robotics-Website p {
   color: #000;
   margin: 0.5rem 0 0;
+}
+
+/* Animated Scanline Overlay */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.15) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Flashing Alert Text */
+.blink-text {
+  animation: blinker 1s steps(2, start) infinite;
+  color: var(--y2k-fuchsia);
+  font-weight: bold;
+}
+
+@keyframes blinker {
+  to {
+    visibility: hidden;
+  }
 }
