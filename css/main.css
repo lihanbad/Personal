@@ -340,3 +340,569 @@ body::before {
   font-weight: bold;
   color: #111;
 }
+
+/* Markdown Formatting within Note Viewer */
+.note-viewer h1, 
+.note-viewer h2, 
+.note-viewer h3 {
+  color: var(--y2k-win-blue);
+  font-family: "Courier New", monospace;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px dashed var(--y2k-win-blue);
+}
+
+.note-viewer a {
+  color: #0000ee;
+  font-weight: bold;
+}
+
+.note-viewer a:hover {
+  background: var(--y2k-yellow);
+}
+
+.note-viewer code {
+  background: #f0f0f0;
+  border: 1px solid #808080;
+  padding: 2px 4px;
+  font-family: "Courier New", monospace;
+}
+
+.note-viewer pre {
+  background: #f0f0f0;
+  border: 2px inset #808080;
+  padding: 8px;
+  overflow-x: auto;
+}
+
+.note-viewer ul, 
+.note-viewer ol {
+  padding-left: 20px;
+}
+
+/* =========================================================
+   CYBER_NOTEBOOK v2.0 -- app window layout
+   ========================================================= */
+.app-window {
+  margin: 1.5rem;
+  background: var(--y2k-silver);
+  border: 3px outset #ffffff;
+  padding: 2px;
+}
+
+.app-window .win-body {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 0;
+  padding: 0;
+}
+
+.app-window aside {
+  background: #f7f7f7;
+  border-right: 2px inset #808080;
+  padding: 1rem;
+  overflow-y: auto;
+  max-height: 72vh;
+}
+
+.app-window aside h1 {
+  font-size: 1rem;
+  color: var(--y2k-win-blue);
+  margin: 0 0 0.5rem;
+  letter-spacing: 1px;
+}
+
+.app-window main {
+  padding: 1rem 1.25rem;
+  background: #ffffff;
+  overflow-y: auto;
+  max-height: 72vh;
+}
+
+.app-window main h2 {
+  color: #000;
+  font-family: "Courier New", monospace;
+  margin: 0.25rem 0 0.75rem;
+  border-bottom: 2px solid var(--y2k-win-blue);
+  word-break: break-word;
+}
+
+/* sidebar file tree */
+.note-cat {
+  font-size: 0.7rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  color: #800080;
+  background: var(--y2k-yellow);
+  border: 1px solid #000;
+  padding: 2px 6px;
+  margin: 0.75rem 0 0.25rem;
+}
+
+.note-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-family: "Courier New", monospace;
+  font-size: 0.78rem;
+  background: #e8e8e8;
+  border: 1px solid #808080;
+  color: #000;
+  padding: 4px 8px;
+  margin: 2px 0;
+  cursor: pointer;
+}
+
+.note-item:hover {
+  background: var(--y2k-cyan);
+  border-style: inset;
+}
+
+.note-item.active {
+  background: var(--y2k-win-blue);
+  color: #ffffff;
+  font-weight: bold;
+  border: 2px inset #808080;
+}
+
+.note-empty {
+  color: #ff0000;
+  font-family: "Courier New", monospace;
+  font-size: 0.85rem;
+  padding: 6px;
+}
+
+/* search + counters */
+.note-search {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: "Courier New", monospace;
+  font-size: 0.8rem;
+  padding: 4px 6px;
+  border: 2px inset #808080;
+  background: #ffffff;
+  color: #000;
+}
+
+.note-count {
+  font-family: "Courier New", monospace;
+  font-size: 0.7rem;
+  margin: 4px 0 8px;
+  color: var(--y2k-win-blue);
+  border-bottom: 1px dashed #000;
+  padding-bottom: 4px;
+}
+
+/* breadcrumb + position */
+.breadcrumb {
+  font-family: "Courier New", monospace;
+  font-size: 0.7rem;
+  color: #808080;
+  border: 1px solid #c0c0c0;
+  background: #fff;
+  padding: 2px 6px;
+  margin-bottom: 0.5rem;
+  word-break: break-all;
+}
+
+.nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  border-top: 2px dashed var(--y2k-cyan);
+  padding-top: 0.75rem;
+}
+
+.nav-row .note-nav {
+  font-size: 0.75rem;
+  padding: 6px 12px;
+}
+
+.nav-row .position {
+  font-family: "Courier New", monospace;
+  font-size: 0.8rem;
+  color: #000;
+  font-weight: bold;
+}
+
+/* markdown tweaks for the new viewer */
+.note-viewer table {
+  border-collapse: collapse;
+  margin: 0.75rem 0;
+  font-size: 0.88rem;
+}
+
+.note-viewer th, .note-viewer td {
+  border: 1px solid #808080;
+  padding: 4px 8px;
+  text-align: left;
+}
+
+.note-viewer th {
+  background: #e0e0e0;
+  color: #000;
+  font-family: "Courier New", monospace;
+  font-size: 0.78rem;
+  border: 1px solid #000;
+}
+
+.note-viewer tr:nth-child(even) td {
+  background: #f0f0f0;
+}
+
+.note-viewer pre {
+  max-width: 100%;
+}
+
+.note-viewer img {
+  max-width: 100%;
+}
+
+@media (max-width: 700px) {
+  .app-window .win-body {
+    grid-template-columns: 1fr;
+  }
+  .app-window aside {
+    border-right: 0;
+    border-bottom: 2px inset #808080;
+    max-height: 35vh;
+  }
+  .app-window main {
+    max-height: none;
+  }
+}
+
+/* =========================================================
+   CYBER_NOTEBOOK v2.1 -- facelift
+   ========================================================= */
+.nav-active {
+  background: var(--y2k-fuchsia);
+  color: #fff !important;
+  padding: 0 2px;
+}
+
+/* hero banner for the notebook */
+.notebook-hero {
+  padding: 1.4rem 1rem;
+  background:
+    repeating-linear-gradient(45deg, rgba(0,255,255,.06) 0 8px, transparent 8px 16px),
+    rgba(0,0,40,.6);
+}
+
+/* app chrome -- outer drop shadow + inner bevel */
+.app-window {
+  box-shadow: 6px 6px 0 rgba(0,0,0,.55), inset 0 0 0 1px #000;
+}
+.app-window .win-header {
+  padding: 4px 8px;
+  background: linear-gradient(90deg, #000060 0%, #0a1a58 60%, #0055a0 100%);
+}
+.win-ico {
+  background: #fff;
+  color: #000080;
+  font-size: .72rem;
+  padding: 0 3px;
+  margin-right: 5px;
+  border: 1px solid #808080;
+}
+
+/* windows-98 menu bar */
+.menu-bar {
+  display: flex;
+  gap: 0;
+  background: var(--y2k-silver);
+  border-bottom: 1px solid #808080;
+  padding: 1px 2px;
+}
+.menu-item {
+  font-family: "Courier New", monospace;
+  font-size: .72rem;
+  font-weight: bold;
+  color: #000;
+  padding: 2px 8px;
+  cursor: default;
+}
+.menu-item:hover,
+.menu-item.active {
+  background: var(--y2k-win-blue);
+  color: #fff;
+}
+
+/* toolbar */
+.nb-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 6px;
+  background: var(--y2k-silver);
+  border-bottom: 2px inset #fff;
+}
+.tb-btn {
+  font-family: "Courier New", monospace;
+  font-size: .72rem;
+  font-weight: bold;
+  background: var(--y2k-silver);
+  border: 1px outset #fff;
+  color: #000;
+  padding: 3px 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.tb-btn:hover { background: var(--y2k-yellow); }
+.tb-btn:active { border-style: inset; }
+.tb-ico { color: #000080; font-weight: bold; }
+.tb-sep {
+  flex: 1;
+}
+
+/* sidebar header label */
+.side-head {
+  border-bottom: 1px solid #000;
+  margin-bottom: 6px;
+  padding-bottom: 2px;
+}
+.side-title {
+  font-family: "Courier New", monospace;
+  font-size: .72rem;
+  font-weight: bold;
+  color: var(--y2k-win-blue);
+  letter-spacing: .5px;
+}
+
+/* category tree headers (now buttons) */
+.note-cat {
+  font-family: "Courier New", monospace;
+  font-size: .68rem;
+  font-weight: bold;
+  letter-spacing: .5px;
+  color: #800080;
+  background: var(--y2k-yellow);
+  border: 1px solid #000;
+  padding: 3px 6px;
+  margin: .75rem 0 .3rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  box-sizing: border-box;
+}
+.note-cat::after {
+  content: "\25BC";   /* ▼ */
+  font-size: .6rem;
+  color: #000;
+}
+.note-cat.collapsed::after {
+  content: "\25B6";   /* ▶ */
+}
+.note-cat:hover { filter: brightness(1.08); }
+
+/* note files in the tree */
+.note-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-family: "Courier New", monospace;
+  font-size: .76rem;
+  background: #e8e8e8;
+  border: 1px solid #b0b0b0;
+  border-left: 4px solid #000080;
+  color: #000;
+  padding: 4px 8px;
+  margin: 2px 0;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.note-item:hover {
+  background: var(--y2k-cyan);
+  border-color: #000;
+  transform: translateX(2px);
+}
+.note-item.active {
+  background: linear-gradient(90deg, var(--y2k-win-blue), #1084d0);
+  color: #fff;
+  font-weight: bold;
+  border-left: 4px solid var(--y2k-lime);
+}
+
+/* reader header row */
+.reader-toolbar {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  flex-wrap: wrap;
+}
+.cat-badge {
+  font-family: "Courier New", monospace;
+  font-size: .68rem;
+  font-weight: bold;
+  color: #fff;
+  background: #800080;
+  padding: 2px 7px;
+  border: 1px solid #000;
+  letter-spacing: .5px;
+}
+
+/* windows-98 status bar */
+.status-bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--y2k-silver);
+  border-top: 2px inset #fff;
+  padding: 3px 4px;
+  font-family: "Courier New", monospace;
+  font-size: .7rem;
+  color: #000;
+}
+.sb-seg {
+  background: #fff;
+  border: 1px inset #808080;
+  padding: 1px 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 46%;
+}
+.sb-seg.sb-push { border-style: none; background: transparent; }
+.sb-seg.sb-prepend { border-right: 1px solid #808080; }
+.sb-clock.sb-push { border-style: none; }
+.status-bar .sb-clock {
+  margin-left: auto;
+  background: #fff;
+  border: 1px inset #808080;
+  padding: 1px 6px;
+  white-space: nowrap;
+}
+
+/* markdown reader polish */
+.reader-loading {
+  font-family: "Courier New", monospace;
+  color: #000;
+  padding: 2rem 0;
+  text-align: center;
+}
+.note-viewer {
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-size: .86rem;
+  line-height: 1.55;
+  color: #000;
+}
+.note-viewer h1 {
+  font-size: 1.25rem;
+  background: linear-gradient(90deg, rgba(0,0,128,.12), transparent);
+  border-bottom: 3px double #000080;
+  padding: 4px 6px;
+  margin: 0.75rem 0 1rem;
+  color: #000;
+}
+.note-viewer h2 {
+  font-size: 1.05rem;
+  border-bottom: 2px dashed #000080;
+  padding-bottom: 3px;
+  color: #000;
+}
+.note-viewer h3 {
+  font-size: .95rem;
+  border-bottom: 1px solid #808080;
+  padding-bottom: 2px;
+  color: #000;
+}
+.note-viewer ol, .note-viewer ul {
+  padding-left: 1.4rem;
+}
+.note-viewer li {
+  margin: 3px 0;
+  color: #000;
+}
+.note-viewer ul li::marker {
+  content: ">> ";
+  color: #000;
+  font-weight: bold;
+}
+.note-viewer strong {
+  color: #000;
+}
+.note-viewer em { color: #000; }
+.note-viewer del { opacity: .55; }
+.note-viewer hr {
+  border: none;
+  border-top: 2px dashed #000080;
+  margin: 1.25rem 0;
+}
+.note-viewer blockquote {
+  margin: .75rem 0;
+  padding: 6px 12px;
+  background: #eef;
+  border-left: 6px solid #000080;
+  font-style: italic;
+  color: #000;
+}
+.note-viewer input[type="checkbox"] {
+  accent-color: #000080;
+}
+/* terminal-style code blocks */
+.note-viewer code {
+  background: #e8e8e8;
+  border: 1px solid #808080;
+  border-radius: 0;
+  padding: 1px 4px;
+  font-family: "Courier New", monospace;
+  font-size: .82rem;
+  color: #000;
+}
+.note-viewer pre {
+  background: #eef2ee;
+  border: 1px solid #808080;
+  border-left: 5px solid #444;
+  color: #000;
+  padding: 10px 12px;
+  overflow-x: auto;
+}
+.note-viewer pre code {
+  background: none;
+  border: none;
+  color: #000;
+  padding: 0;
+  font-size: .8rem;
+  line-height: 1.5;
+}
+.note-viewer a {
+  color: #000 !important;
+  border-bottom: 1px dotted #000;
+  font-weight: bold;
+}
+.note-viewer a:hover {
+  background: var(--y2k-yellow);
+  border-bottom-style: solid;
+}
+
+/* retro scrollbars (webkit) */
+aside::-webkit-scrollbar, main::-webkit-scrollbar,
+.note-viewer::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+aside::-webkit-scrollbar-track, main::-webkit-scrollbar-track {
+  background: #c0c0c0;
+  border-left: 1px solid #808080;
+}
+aside::-webkit-scrollbar-thumb, main::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #fff, #c0c0c0);
+  border: 1px outset #808080;
+}
+aside::-webkit-scrollbar-thumb:hover, main::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #d0d0ff, #c0c0c0);
+}
+
+@media (max-width: 700px) {
+  .nb-toolbar { flex-wrap: wrap; }
+  .status-bar .sb-push { display: none; }
+  .status-bar .sb-seg { max-width: none; flex: 1; }
+}

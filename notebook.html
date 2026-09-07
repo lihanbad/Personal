@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CYBER_ZONE // Notebook.exe</title>
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- Renders .md files nicely -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Inline note text (works offline / from file://) -->
+    <script src="notes-data.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Ticker Banner -->
+        <div class="marquee-container">
+            <marquee behavior="scroll" direction="left" scrollamount="6">
+                *** CYBER_NOTEBOOK v2.1 *** PUBLIC READ-ONLY ARCHIVE *** <span class="blink-text">[SYSTEM READY]</span> *** 25 FILES INDEXED ***
+            </marquee>
+        </div>
+
+        <!-- Retro Navbar -->
+        <nav class="navbar">
+            <div class="logo">NOTEBOOK.EXE</div>
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="notebook.html" class="nav-active">NOTEBOOK</a></li>
+                <li><a href="projects.html">PROJECTS</a></li>
+                <li><a href="robotics.html">ROBOTICS</a></li>
+                <li><a href="terminal.html">TERMINAL</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+
+        <!-- Hero -->
+        <header class="hero notebook-hero">
+            <h1 class="glitch-title">CYBER_NOTEBOOK v2.1</h1>
+            <p class="tagline">&lt;&lt;&lt; ROBOTICS // AI // ENGINEERING FIELD MANUAL &gt;&gt;&gt;</p>
+        </header>
+
+        <main class="content">
+
+            <!-- The main "app" window -->
+            <div class="app-window">
+                <div class="win-header">
+                    <span class="win-title"><span class="win-ico">&#x25A3;</span> C:\PUBLIC\NOTEBOOK.EXE</span>
+                    <div class="win-controls">
+                        <button class="win-btn">_</button>
+                        <button class="win-btn">&#x25A1;</button>
+                        <button class="win-btn">X</button>
+                    </div>
+                </div>
+
+                <!-- menu bar -->
+                <div class="menu-bar">
+                    <span class="menu-item">FILE</span>
+                    <span class="menu-item">EDIT</span>
+                    <span class="menu-item">VIEW</span>
+                    <span class="menu-item">HELP</span>
+                </div>
+
+                <!-- toolbar -->
+                <div class="nb-toolbar">
+                    <button class="tb-btn" id="goto-index" title="Master index">
+                        <span class="tb-ico">&#x21A9;</span> INDEX
+                    </button>
+                    <button class="tb-btn" id="prev-note" title="Previous (Alt+Up)">
+                        <span class="tb-ico">&#x25C0;</span> PREV
+                    </button>
+                    <button class="tb-btn" id="next-note" title="Next (Alt+Down)">
+                        NEXT <span class="tb-ico">&#x25B6;</span>
+                    </button>
+                    <span class="tb-sep"></span>
+                    <button class="tb-btn" id="nb-refresh" title="Reload current note">
+                        <span class="tb-ico">&#x21BB;</span> REFRESH
+                    </button>
+                </div>
+
+                <!-- split body -->
+                <div class="win-body">
+                    <aside>
+                        <div class="side-head">
+                            <span class="side-title">[ DIRECTORY ]</span>
+                        </div>
+                        <input type="search" id="note-search" class="note-search"
+                               placeholder="FILTER FILES..." aria-label="Filter notes">
+                        <div id="note-count" class="note-count">... LOADING</div>
+                        <div id="notes" aria-label="Notes Directory"></div>
+                    </aside>
+                    <main>
+                        <div class="reader-toolbar">
+                            <span id="breadcrumb" class="breadcrumb">C:\PUBLIC\NOTES\\</span>
+                            <span id="cat-badge" class="cat-badge">--</span>
+                        </div>
+                        <h2 id="note-title">SELECT A FILE</h2>
+                        <div id="note-content" class="note-viewer">Loading files...</div>
+                    </main>
+                </div>
+
+                <!-- windows-98 status bar -->
+                <div class="status-bar">
+                    <span class="sb-seg" id="status">Status: READ-ONLY</span>
+                    <span class="sb-seg" id="note-position">0 / 0</span>
+                    <span class="sb-seg sb-push">&#x2191;&#x2193; NAV</span>
+                    <span class="sb-seg sb-push">&#x25B6;&#x25C0; TREE</span>
+                    <span class="sb-seg sb-clock" id="nb-clock">[--:--]</span>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            &copy; 2000 CYBER_ZONE NOTEBOOK. <span class="blink-text">ARCHIVE READ-ONLY</span>
+        </footer>
+    </div>
+
+    <script>
+        // ========================================================
+        // CYBER_NOTEBOOK v2.1 -- category data
+        // ========================================================
+        const CATEGORIES = {
+            'ROOT // INDEX': [
+                { name: '00. Notes Master Index', file: 'notes/0-INDEX.md' }
+            ],
+            'FLL // FIRST LEGO LEAGUE': [
+                { name: '01. What is FLL?',             file: 'notes/fll-01-what-is-fll.md' },
+                { name: '02. Building & SPIKE Coding',   file: 'notes/fll-02-building-and-programming-spike.md' }
+            ],
+            'FTC // FIRST TECH CHALLENGE': [
+                { name: '01. What is FTC?',            file: 'notes/ftc-01-what-is-ftc.md' },
+                { name: '02. Hardware & Kit of Parts',  file: 'notes/ftc-02-hardware-kit-of-parts.md' },
+                { name: '03. Drivetrain Design',        file: 'notes/ftc-03-drivetrain-design.md' },
+                { name: '04. OpMode Programming',       file: 'notes/ftc-04-opmode-programming.md' },
+                { name: '05. Auto, PID & Odometry',     file: 'notes/ftc-05-autonomous-pid-control.md' },
+                { name: '06. Road Runner & Pathing',    file: 'notes/ftc-06-road-runner-pathing.md' },
+                { name: '07. Vision & AprilTags',       file: 'notes/ftc-07-computer-vision-apriltag.md' },
+                { name: '08. Strategy & Pit Ops',       file: 'notes/ftc-08-game-strategy-and-pit.md' }
+            ],
+            'FRC // FIRST ROBOTICS COMPETITION': [
+                { name: '01. What is FRC?',            file: 'notes/frc-01-what-is-frc.md' },
+                { name: '02. WPILib Command-Based',     file: 'notes/frc-02-wpilib-command-based.md' },
+                { name: '03. Drivetrains & Swerve',     file: 'notes/frc-03-drivetrains-swerve.md' },
+                { name: '04. Motion Profiling & Paths', file: 'notes/frc-04-motion-profile-pathing.md' },
+                { name: '05. Vision & Limelight',       file: 'notes/frc-05-vision-and-limelight.md' },
+                { name: '06. CAN Bus & Power',          file: 'notes/frc-06-can-bus-and-control-system.md' }
+            ],
+            'FGC // FIRST GLOBAL CHALLENGE': [
+                { name: '01. What is FGC?',            file: 'notes/fgc-01-what-is-first-global.md' },
+                { name: '02. Platform & Programming',   file: 'notes/fgc-02-robot-platform-and-programming.md' }
+            ],
+            'AI // ARTIFICIAL INTELLIGENCE': [
+                { name: '01. AI in Robotics',           file: 'notes/ai-01-ai-in-robotics-overview.md' },
+                { name: '02. ML Basics',                file: 'notes/ai-02-machine-learning-basics.md' },
+                { name: '03. Vision Pipelines',         file: 'notes/ai-03-computer-vision-pipelines.md' },
+                { name: '04. Neural Nets & Pathfinding',file: 'notes/ai-04-neural-networks-and-pathfinding.md' }
+            ],
+            'CORE // FUNDAMENTALS': [
+                { name: '01. Control Theory (PID)',     file: 'notes/robotics-01-control-theory-basics.md' },
+                { name: '02. Inspection Checklist',     file: 'notes/robotics-02-robot-inspector-checklist.md' }
+            ]
+        };
+
+        // Flatten once (category headers rendered dynamically)
+        const flat = [];
+        Object.entries(CATEGORIES).forEach(([cat, notes]) => {
+            notes.forEach(n => flat.push({ cat, ...n }));
+        });
+
+        // ========================================================
+        // STATE
+        // ========================================================
+        let current = 0;
+        let query = '';
+        const collapsed = new Set();
+        const list = document.querySelector('#notes');
+        const titleEl = document.querySelector('#note-title');
+        const contentEl = document.querySelector('#note-content');
+        const statusEl = document.querySelector('#status');
+        const breadEl = document.querySelector('#breadcrumb');
+        const catBadgeEl = document.querySelector('#cat-badge');
+        const countEl = document.querySelector('#note-count');
+        const posEl = document.querySelector('#note-position');
+        const searchEl = document.querySelector('#note-search');
+        const clockEl = document.querySelector('#nb-clock');
+
+        // ========================================================
+        // RENDER INDEX (category tree + search filter)
+        // ========================================================
+        function visibleIndexes() {
+            if (!query) return flat.map((_, i) => i);
+            const q = query.toLowerCase();
+            const out = [];
+            flat.forEach((n, i) => {
+                const hay = (n.name + ' ' + n.cat + ' ' + n.file).toLowerCase();
+                if (hay.includes(q)) out.push(i);
+            });
+            return out;
+        }
+
+        function renderList() {
+            list.innerHTML = '';
+            const vis = visibleIndexes();
+            countEl.textContent = vis.length + ' FILE' + (vis.length === 1 ? '' : 'S') + ' INDEXED';
+
+            let lastCat = null;
+            let hidden = 0;
+
+            vis.forEach((idx) => {
+                const note = flat[idx];
+                const isCollapsed = collapsed.has(note.cat) && !query;
+
+                if (note.cat !== lastCat) {
+                    lastCat = note.cat;
+                    const header = document.createElement('button');
+                    header.className = 'note-cat' + (isCollapsed ? ' collapsed' : '');
+                    header.type = 'button';
+                    header.textContent = note.cat;
+                    header.setAttribute('title', 'Click to collapse / expand');
+                    header.addEventListener('click', () => toggleCat(note.cat));
+                    list.append(header);
+                    if (isCollapsed) hidden = 0;
+                }
+
+                if (isCollapsed) { hidden++; return; }
+
+                const btn = document.createElement('button');
+                btn.className = 'note-item' + (idx === current ? ' active' : '');
+                btn.type = 'button';
+                btn.textContent = note.name;
+                btn.addEventListener('click', () => loadNote(idx));
+                list.append(btn);
+            });
+        }
+
+        function toggleCat(cat) {
+            if (collapsed.has(cat)) collapsed.delete(cat);
+            else collapsed.add(cat);
+            renderList();
+        }
+
+        // ========================================================
+        // LOAD A NOTE
+        // ========================================================
+        function ensureVisible(note) {
+            if (query) {
+                const hay = (note.name + ' ' + note.cat).toLowerCase();
+                return hay.includes(query.toLowerCase());
+            }
+            return true;
+        }
+
+        // Try several path forms so the file loads at the site root,
+        // in a subfolder, or even when double-clicked (file://).
+        async function fetchNoteText(file) {
+            const fname = file.split('/').pop();
+            // Offline / file:// fallback: inline data embedded by build script
+            if (typeof window.NOTES_DATA === 'object' && window.NOTES_DATA[fname]) {
+                return window.NOTES_DATA[fname];
+            }
+
+            const base = file;
+            const candidates = [
+                base,
+                (base.indexOf('/') === 0) ? base.slice(1) : ('./' + base),
+                (base.indexOf('/') === 0) ? './' + base.slice(1) : ('/' + base)
+            ];
+            let lastErr = new Error('File not found');
+            for (const path of candidates) {
+                try {
+                    const res = await fetch(path);
+                    if (res.ok) return await res.text();
+                    lastErr = new Error('File not found: ' + path);
+                } catch (e) { lastErr = e; }
+            }
+            throw lastErr;
+        }
+
+        async function loadNote(index) {
+            if (index < 0 || index >= flat.length) return;
+            current = index;
+            collapsed.delete(flat[current].cat);   // always show where you are
+            renderList();
+
+            const note = flat[current];
+            titleEl.textContent = note.name;
+            breadEl.textContent = 'C:\\PUBLIC\\NOTES\\' + note.cat + '\\' + note.file.split('/').pop();
+            catBadgeEl.textContent = note.cat.split(' ')[0];
+            posEl.textContent = (current + 1) + ' / ' + flat.length;
+            statusEl.textContent = 'Status: LOADING...';
+            contentEl.innerHTML = '<div class="reader-loading"><span class="blink-text">[ READING FILE... ]</span></div>';
+
+            try {
+                const text = await fetchNoteText(note.file);
+                const isMd = note.file.toLowerCase().endsWith('.md');
+
+                if (isMd && typeof marked !== 'undefined') {
+                    contentEl.innerHTML = marked.parse(text);
+                } else {
+                    contentEl.textContent = text;
+                }
+
+                // Rewrite internal .md links so they open inside the notebook
+                contentEl.querySelectorAll('a[href$=".md"]').forEach(a => {
+                    const fname = a.getAttribute('href').split('/').pop();
+                    if (flat.some(n => n.file.endsWith(fname))) {
+                        a.setAttribute('href', 'notebook.html?note=' + encodeURIComponent(fname));
+                    } else {
+                        a.setAttribute('target', '_blank');
+                        a.setAttribute('rel', 'noopener');
+                    }
+                });
+                contentEl.scrollTop = 0;
+                statusEl.textContent = 'Status: READ-ONLY / ' + note.file.replace('notes/', '');
+            } catch (err) {
+                contentEl.innerHTML = '<div class="reader-loading"><span class="blink-text">[ FILE_NOT_FOUND ]</span><br><br>'
+                    + 'Could not load: ' + note.file
+                    + '<br>Make sure the file exists inside the /notes folder.</div>';
+                statusEl.textContent = 'Status: ERROR';
+            }
+        }
+
+        function nextIndex(from) {
+            let i = from + 1;
+            const vis = visibleIndexes();
+            if (query) {
+                if (!vis.length) return from;
+                if (i >= flat.length) i = 0;
+                while (!ensureVisible(flat[i])) { i = (i + 1) % flat.length; }
+                return i;
+            }
+            if (collapsed.has(flat[i] && flat[i].cat) && i < flat.length) i++;
+            return i >= flat.length ? 0 : i;
+        }
+        function prevIndex(from) {
+            let i = from - 1;
+            if (query) {
+                if (!visibleIndexes().length) return from;
+                if (i < 0) i = flat.length - 1;
+                while (!ensureVisible(flat[i])) { i = (i - 1 + flat.length) % flat.length; }
+                return i;
+            }
+            if (i >= 0 && collapsed.has(flat[i].cat)) i--;
+            return i < 0 ? flat.length - 1 : i;
+        }
+
+        function refreshClock() {
+            if (!clockEl) return;
+            const d = new Date();
+            const p = n => String(n).padStart(2, '0');
+            clockEl.textContent = '[' + p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds()) + ']';
+        }
+
+        // ========================================================
+        // WIRE UP
+        // ========================================================
+        searchEl.addEventListener('input', () => {
+            query = searchEl.value.trim();
+            renderList();
+        });
+
+        document.querySelector('#prev-note').addEventListener('click', () => loadNote(prevIndex(current)));
+        document.querySelector('#next-note').addEventListener('click', () => loadNote(nextIndex(current)));
+        document.querySelector('#goto-index').addEventListener('click', () => {
+            loadNote(flat.findIndex(n => n.file.includes('0-INDEX')));
+        });
+        document.querySelector('#nb-refresh').addEventListener('click', () => loadNote(current));
+
+        document.addEventListener('keydown', (e) => {
+            if (document.activeElement === searchEl) return; // typing
+            if (e.key === 'ArrowDown') { e.preventDefault(); loadNote(nextIndex(current)); }
+            if (e.key === 'ArrowUp')   { e.preventDefault(); loadNote(prevIndex(current)); }
+        });
+
+        refreshClock();
+        setInterval(refreshClock, 1000);
+
+        // Auto-open ?note=path or the master index on page load
+        const params = new URLSearchParams(location.search);
+        const q = params.get('note');
+        const startIdx = q ? flat.findIndex(n => n.file.endsWith(q)) : -1;
+        loadNote(startIdx >= 0 ? startIdx : flat.findIndex(n => n.file.includes('0-INDEX')));
+    </script>
+</body>
+</html>

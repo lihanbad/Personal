@@ -28,3 +28,28 @@ window.addEventListener('keydown', (e) => {
     document.body.style.filter = "invert(100%)";
   }
 });
+
+// Minimal JS Timer Logic
+const targetDate = new Date("2026-09-12T16:00:00Z").getTime();
+
+function updateTimer() {
+  const diff = targetDate - new Date().getTime();
+
+  if (diff <= 0) {
+    document.querySelector(".countdown-display").textContent = "RELEASED";
+    return;
+  }
+
+  const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const m = Math.floor((diff / (1000 * 60)) % 60);
+  const s = Math.floor((diff / 1000) % 60);
+
+  document.getElementById("cd-days").textContent = String(d).padStart(2, "0");
+  document.getElementById("cd-hours").textContent = String(h).padStart(2, "0");
+  document.getElementById("cd-mins").textContent = String(m).padStart(2, "0");
+  document.getElementById("cd-secs").textContent = String(s).padStart(2, "0");
+}
+
+setInterval(updateTimer, 1000);
+updateTimer();
